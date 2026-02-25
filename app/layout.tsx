@@ -1,20 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Noto_Sans } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "@/components/main/navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const notoSans = Noto_Sans({
+  variable: "--font-noto-sans",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Naturex Test",
-  description: "Naturex Test version 1.0.0",
+  title: "NatureX",
+  description: "NatureX - 생물다양성 분석 결과 공유 플랫폼",
 };
 
 export default function RootLayout({
@@ -23,11 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="ko">
+      <body className={`${notoSans.variable} antialiased`}>
+        <Navbar />
+        <main>{children}</main>
       </body>
     </html>
   );
